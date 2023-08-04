@@ -12,15 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72703c16e7cff474696c1069977e6e5f, type: 3}
   m_Name: Crab
   m_EditorClassIdentifier: 
-  currentAnimation: Move
+  currentAnimation: Idle
   phantom: 0
+  bossName: 
   fase2: 0
   fase3: 0
   crab: 1
   flyer: 0
-  maxHP: 11
-  damage: 1
+  maxHP: 2
+  damage: 2
   speed: 7
-  jumpForce: 7
+  jumpForce: 14
   attackRange: 0
   attackSpeed: 0

@@ -13,11 +13,15 @@ MonoBehaviour:
   m_Name: Flyer
   m_EditorClassIdentifier: 
   currentAnimation: Idle
-  maxHP: 9
+  phantom: 0
+  bossName: 
+  fase2: 0
+  fase3: 0
   crab: 0
   flyer: 1
+  maxHP: 3
+  damage: 3
   speed: 8
   jumpForce: 0
-  damage: 2
-  attackRange: 3
+  attackRange: 10
   attackSpeed: 8

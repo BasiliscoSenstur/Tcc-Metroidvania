@@ -5,12 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class GateController : MonoBehaviour
 {
+    public static GateController instance;
     PlayerController player;
     Animator anim;
 
     public Transform exitPoint;
     public string levelToLoad;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         player = PlayerController.instance;
@@ -19,19 +24,7 @@ public class GateController : MonoBehaviour
 
     void Update()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < 4.2f)
-        {
-            OpenGate(true);
-        }
-        else
-        {
-            OpenGate(false);
-        }
 
-        if(Vector3.Distance(player.transform.position, exitPoint.position) < 0.2f)
-        {
-            player.noInput = false;
-        }
     }
 
     public void OpenGate(bool status)
@@ -71,8 +64,19 @@ public class GateController : MonoBehaviour
         PlayerPrefs.SetFloat("PosY", exitPoint.position.y);
 
         PlayerSpawnController.instance.SetSpawnPoint(exitPoint.position);
+
         SceneManager.LoadScene(levelToLoad);
 
+        if (AudioController.instance.level1.isPlaying)
+        {
+            AudioController.instance.LevelMusic(2);
+        }
+        else
+        {
+            AudioController.instance.LevelMusic(1);
+        }
+
         UIController.instance.FadeScreen("FadeFromBlack");
+        player.noInput = false;
     }
 }

@@ -54,17 +54,17 @@ public class BossTrigger : MonoBehaviour
     {
         boss.gameObject.SetActive(true);
 
-        AudioController.instance.PlayBossMusic();
-
-        yield return new WaitForSeconds(0.42f);
+        yield return new WaitForSeconds(0.54f);
 
         CameraController.instance.BossCam(1);
 
-        yield return new WaitForSeconds(0.42f);
+        yield return new WaitForSeconds(0.54f);
+
+        AudioController.instance.BossMusic();
 
         BossController.instance.bossHpBar.gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(0.42f);
+        yield return new WaitForSeconds(0.54f);
 
         ChangeAnimationHpBar("BossCanvasFadeIn");
     }

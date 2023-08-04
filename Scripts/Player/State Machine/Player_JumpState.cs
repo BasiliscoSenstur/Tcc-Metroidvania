@@ -6,7 +6,6 @@ public class Player_JumpState : Abstract
     public override void EnterState(PlayerController player)
     {
         stateCanDoubleJump = true;
-
     }
     public override void LogicsUpdate(PlayerController player)
     {

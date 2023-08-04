@@ -19,7 +19,7 @@ public class BossController : MonoBehaviour
     public string bossName;
     public Animator anim;
     public Slider bossHpBar;
-    public GameObject winObjects;
+    public GameObject winObjects, deathEffect, headLight;
 
     //Shot
     public GameObject fireball;
@@ -82,6 +82,7 @@ public class BossController : MonoBehaviour
         if (currentBossHp <= 0)
         {
             currentBossHp = 0;
+            Instantiate(deathEffect, transform.position, transform.rotation);
             BossDeath();
         }
         bossHpBar.value = currentBossHp;
@@ -121,6 +122,7 @@ public class BossController : MonoBehaviour
         if (currentBossHp > 0)
         {
             data.ChangeEnemyAnimation(anim, "Phantom_Vanish");
+            headLight.gameObject.SetActive(false);
 
             yield return new WaitForSeconds(0.27f);
 
@@ -131,6 +133,7 @@ public class BossController : MonoBehaviour
 
             anim.gameObject.SetActive(true);
             data.ChangeEnemyAnimation(anim, "Phantom_Appears");
+            headLight.gameObject.SetActive(true);
         }
     }
 

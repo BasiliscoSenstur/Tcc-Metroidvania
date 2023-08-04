@@ -90,6 +90,7 @@ public class EnemyController : MonoBehaviour
         currentHP -= damage;
         if (currentHP <= 0)
         {
+            AudioController.instance.PlaySfxAdjusted(11);
             Instantiate(deathEffect, transform.position, transform.rotation);
             Destroy(gameObject);
         }

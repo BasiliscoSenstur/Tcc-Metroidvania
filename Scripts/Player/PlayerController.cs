@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -82,7 +83,7 @@ public class PlayerController : MonoBehaviour
         STATE = currentState.ToString();
 
         //Inputs & Checks
-        if(currentState != dashState)
+        if (currentState != dashState)
         {
             if (!noInput)
             {

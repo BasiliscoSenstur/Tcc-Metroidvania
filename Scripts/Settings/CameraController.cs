@@ -18,7 +18,14 @@ public class CameraController : MonoBehaviour
         cam.Follow = PlayerController.instance.transform;
         cam.LookAt = PlayerController.instance.transform;
 
-        AudioController.instance.PlayLevelMusic();
+        if (AudioController.instance.level1.isPlaying)
+        {
+            AudioController.instance.LevelMusic(2);
+        }
+        else
+        {
+            AudioController.instance.LevelMusic(1);
+        }
     }
 
     public void BossCam(int switchObjectCam)

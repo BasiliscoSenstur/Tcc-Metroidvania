@@ -6,7 +6,7 @@ public class AudioController : MonoBehaviour
 {
     public static AudioController instance;
 
-    public AudioSource mainMenuMusic, levelMusic, bossMusic;
+    public AudioSource menu, level1, level2, boss;
     public AudioSource[] soundEfx;
 
     private void Awake()
@@ -21,31 +21,37 @@ public class AudioController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
-    {
 
+    public void MenuMusic()
+    {
+        level1.Stop();
+        level2.Stop();
+        boss.Stop();
+        menu.Play();
     }
 
-    public void PlayMainMenuMusic()
+    public void LevelMusic(int lvl)
     {
-        levelMusic.Stop();
-        bossMusic.Stop();
-        mainMenuMusic.Play();
-    }
-
-    public void PlayLevelMusic()
-    {
-        if (!levelMusic.isPlaying)
+        menu.Stop();
+        boss.Stop();
+        if(lvl == 1)
         {
-            levelMusic.Play();
-            bossMusic.Stop();
-            mainMenuMusic.Stop();
+            level2.Stop();
+            level1.Play();
+        }
+        if (lvl == 2)
+        {
+            level1.Stop();
+            level2.Play();
         }
     }
-    public void PlayBossMusic()
+
+    public void BossMusic()
     {
-        levelMusic.Stop();
-        bossMusic.Play();
+        level1.Stop();
+        level2.Stop();
+        menu.Stop();
+        boss.Play();
     }
 
     public void PlaySfx(int efxToPlay)

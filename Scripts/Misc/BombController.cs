@@ -26,22 +26,13 @@ public class BombController : MonoBehaviour
             AudioController.instance.PlaySfxAdjusted(3);
 
             Collider2D[] ObjectsToDemage = Physics2D.OverlapCircleAll
-                (transform.position, explosionRange, whatIsDestructible | whatIsEnemy);
+                (transform.position, explosionRange, whatIsDestructible);
 
             if (ObjectsToDemage.Length > 0)
             {
                 foreach (Collider2D other in ObjectsToDemage)
                 {
-                    if (other.CompareTag("Enemy"))
-                    {
-                        EnemyController script;
-                        script = other.GetComponent<EnemyController>();
-                        script.TakeDamage(10);
-                    }
-                    else
-                    {
-                        Destroy(other.gameObject);
-                    }
+                    Destroy(other.gameObject);
                 }
             }
         }

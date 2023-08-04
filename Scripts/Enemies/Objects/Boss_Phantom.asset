@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentAnimation: Phantom_Vanish
   phantom: 1
+  bossName: 
   fase2: 33
   fase3: 66
   crab: 0
   flyer: 0
-  maxHP: 100
+  maxHP: 81
   damage: 3
   speed: 5
   jumpForce: 0

@@ -77,6 +77,7 @@ public class PlayerHealthController : MonoBehaviour
             {
                 currentHP = 0;
                 invencibilityCounter = 0;
+                AudioController.instance.PlaySfx(10);
                 Instantiate(deathEffect, transform.position, transform.rotation);
                 PlayerSpawnController.instance.StartRespawnPlayerCo();
             }
