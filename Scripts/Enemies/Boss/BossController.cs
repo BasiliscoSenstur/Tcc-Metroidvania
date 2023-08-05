@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class BossController : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class BossController : MonoBehaviour
     public string bossName;
     public Animator anim;
     public Slider bossHpBar;
-    public GameObject winObjects, deathEffect, headLight;
+    public GameObject deathEffect, headLight;
 
     //Shot
     public GameObject fireball;
@@ -76,6 +78,7 @@ public class BossController : MonoBehaviour
         currentState = newState;
         currentState.EnterState(this);
     }
+
     public void DealDamageBoss(int damage)
     {
         currentBossHp -= damage;
@@ -102,15 +105,17 @@ public class BossController : MonoBehaviour
         BossTrigger.instance.gameObject.GetComponent<Collider2D>().enabled = false;
         BossTrigger.instance.ChangeAnimationHpBar("BossCanvasFadeOut");
 
-        yield return new WaitForSeconds(0.27f);
-
-        winObjects.gameObject.SetActive(true);
-        winObjects.transform.SetParent(null);
-
         yield return new WaitForSeconds(0.72f);
 
         BossTrigger.instance.anim.gameObject.SetActive(false);
         gameObject.SetActive(false);
+        UIController.instance.endScreenAnim.gameObject.SetActive(true);
+        UIController.instance.FadeScreen(UIController.instance.endScreenAnim, "EndScreenfadeIn");
+        PlayerController.instance.noInput = true;
+
+        yield return new WaitForSeconds(2f);
+
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void StartChangePositionCo()

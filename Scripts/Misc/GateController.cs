@@ -54,7 +54,7 @@ public class GateController : MonoBehaviour
     IEnumerator UseGateCo()
     {
         player.noInput = true;
-        UIController.instance.FadeScreen("FadeToBlack");
+        UIController.instance.FadeScreen(UIController.instance.fadeAnim, "FadeToBlack");
 
         yield return new WaitForSeconds(1.5f);
 
@@ -76,7 +76,7 @@ public class GateController : MonoBehaviour
             AudioController.instance.LevelMusic(1);
         }
 
-        UIController.instance.FadeScreen("FadeFromBlack");
+        UIController.instance.FadeScreen(UIController.instance.fadeAnim, "FadeFromBlack");
         player.noInput = false;
     }
 }

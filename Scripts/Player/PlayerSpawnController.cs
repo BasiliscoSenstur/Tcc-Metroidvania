@@ -45,7 +45,7 @@ public class PlayerSpawnController : MonoBehaviour
 
     public IEnumerator RespawnPlayerCo()
     {
-        UIController.instance.FadeScreen("FadeToBlack");
+        UIController.instance.FadeScreen(UIController.instance.fadeAnim, "FadeToBlack");
 
         PlayerController.instance.gameObject.transform.position = spawnPosition;
 
@@ -59,6 +59,6 @@ public class PlayerSpawnController : MonoBehaviour
 
         player.SetActive(true);
 
-        UIController.instance.FadeScreen("FadeFromBlack");
+        UIController.instance.FadeScreen(UIController.instance.fadeAnim, "FadeFromBlack");
     }
 }

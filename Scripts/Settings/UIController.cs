@@ -11,7 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] Slider HealthBar;
 
     public Image fadeScreen;
-    [SerializeField] Animator anim;
+    public Animator fadeAnim, endScreenAnim;
 
     public GameObject pauseScreen;
 
@@ -32,7 +32,7 @@ public class UIController : MonoBehaviour
     {
         HealthBar.maxValue = PlayerHealthController.instance.maxHP;
         UpdateHealthDisplay();
-        FadeScreen("FadeFromBlack");
+        FadeScreen(fadeAnim, "FadeFromBlack");
     }
 
     void Update()
@@ -47,7 +47,7 @@ public class UIController : MonoBehaviour
         HealthBar.value = PlayerHealthController.instance.currentHP;
     }
 
-    public void FadeScreen(string newFade)
+    public void FadeScreen(Animator anim, string newFade)
     {
         anim.Play(newFade);
     }
@@ -77,7 +77,7 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        FadeScreen("FadeToBlack");
+        FadeScreen(fadeAnim, "FadeToBlack");
 
         yield return new WaitForSeconds(1f);
 
@@ -91,7 +91,7 @@ public class UIController : MonoBehaviour
 
         yield return new WaitForSeconds(0.1f);
 
-        FadeScreen("FadeFromBlack");
+        FadeScreen(fadeAnim, "FadeFromBlack");
 
         instance = null;
         Destroy(gameObject);
